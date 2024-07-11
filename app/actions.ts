@@ -27,7 +27,7 @@ export async function searchMovies(
 
     if (parsedCredentials.error) {
       return {
-        code: ResultCode.UnknownError,
+        code: ResultCode.MinLengthError,
         data: [],
       };
     }

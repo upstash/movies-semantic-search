@@ -20,8 +20,10 @@ export type Movie = {
 };
 
 export enum ResultCode {
+  Empty = "EMPTY",
   Success = "SUCCESS",
   UnknownError = "UNKNOWN_ERROR",
+  MinLengthError = "MIN_LENGTH_ERROR",
 }
 
 export interface Result {

@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <div className="max-w-screen-xl mx-auto px-8 py-12 text-center">
       <header>
-        <h1 className="text-2xl md:text-5xl font-semibold tracking-tight text-emerald-900">
+        <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-emerald-900">
           Movies Semantic Search
         </h1>
       </header>
@@ -36,19 +36,19 @@ function SearchForm() {
   const status = useFormStatus();
 
   return (
-    <div className="flex max-w-screen-md mx-auto items-center rounded-xl gap-4">
+    <div className="flex flex-col sm:flex-row max-w-screen-md mx-auto items-center rounded-xl gap-4">
       <input
-        type="text"
+        type="search"
         name="query"
         placeholder="Search for a movie..."
-        className="grow h-12 rounded-lg border border-emerald-500/40 px-4 text-xl"
+        className="grow w-full sm:w-auto h-12 rounded-lg border border-emerald-500/40 px-4 text-xl"
         disabled={status.pending}
         // defaultValue="best anima from miyazaki"
       />
       <button
         type="submit"
         className={cn(
-          "h-12 text-xl px-4 bg-emerald-500 text-white rounded-lg",
+          "h-12 w-full sm:w-auto text-xl px-4 bg-emerald-500 text-white rounded-lg",
           status.pending && "opacity-50",
         )}
         disabled={status.pending}
@@ -116,7 +116,7 @@ function ResultData({ result }: { result: Result | undefined }) {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8">
       {result?.data.map((movie) => (
         <Link
           key={movie.metadata?.movie_id}
@@ -161,7 +161,8 @@ function ResultData({ result }: { result: Result | undefined }) {
 function KeyValue({ label, value }: { label: string; value: number | string }) {
   return (
     <p className="bg-zinc-100 rounded-lg px-2 py-0.5">
-      <span className="opacity-50">{label}:</span> <span>{value}</span>
+      <span className="">{label}:</span>{" "}
+      <span className="font-semibold">{value}</span>
     </p>
   );
 }

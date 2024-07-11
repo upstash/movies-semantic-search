@@ -5,6 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function normalize(value: number, min: number, max: number) {
-  return (value - min) / (max - min);
-}
+export const normalize = (value: number, min: number, max: number) =>
+  (value - min) / (max - min);
+
+export const formatter = Intl.NumberFormat("en", { notation: "compact" });

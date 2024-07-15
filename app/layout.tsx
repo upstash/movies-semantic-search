@@ -1,6 +1,7 @@
 import "./globals.css";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Movies Semantic Search",
   description: "A simple movie search engine",
   icons: {

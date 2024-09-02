@@ -15,7 +15,7 @@ export default function SearchForm({
 }) {
   return (
     <form
-      className="flex flex-col sm:flex-row max-w-screen-md mx-auto items-center rounded-xl gap-4"
+      className="flex flex-col sm:flex-row max-w-screen-md mx-auto items-center rounded-xl gap-2"
       onSubmit={(e) => {
         e.preventDefault();
         return onSubmit();
@@ -27,13 +27,13 @@ export default function SearchForm({
         value={query}
         onChange={(e) => onChangeQuery(e.target.value)}
         placeholder="Search for a movie..."
-        className="grow w-full sm:w-auto h-12 rounded-lg border border-emerald-500/40 px-4 text-xl"
+        className="grow w-full sm:w-auto h-12 rounded-lg border border-indigo-300 px-4 text-xl"
         disabled={state.isFetching}
       />
       <button
         type="submit"
         className={cn(
-          "h-12 w-full sm:w-auto text-xl px-4 bg-emerald-500 text-white rounded-lg",
+          "h-12 w-full sm:w-auto text-xl px-4 bg-indigo-500 text-white rounded-lg",
           state.isFetching && "opacity-50",
         )}
         disabled={state.isFetching}

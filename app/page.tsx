@@ -6,6 +6,7 @@ import ResultData from "@/components/result-data";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "@/app/actions";
+import { Info } from "@/components/info";
 
 export default function Page() {
   const [query, setQuery] = useState<string>("");
@@ -33,7 +34,7 @@ export default function Page() {
       <header>
         <h1
           onClick={() => onChangeQuery("")}
-          className="cursor-pointer text-3xl md:text-5xl font-semibold tracking-tight text-emerald-900"
+          className="cursor-pointer text-3xl md:text-5xl tracking-tight font-bold text-indigo-900"
         >
           Movies Semantic Search
         </h1>
@@ -55,6 +56,8 @@ export default function Page() {
           onSubmit={onSubmit}
         />
       </div>
+
+      <Info className="mt-20" />
     </div>
   );
 }

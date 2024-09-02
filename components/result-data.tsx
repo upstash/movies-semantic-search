@@ -1,5 +1,4 @@
 import { Result, ResultCode } from "@/lib/types";
-import Image from "next/image";
 import KeyValue from "@/components/tag";
 import type { DefinedUseQueryResult } from "@tanstack/react-query";
 
@@ -36,13 +35,13 @@ export default function ResultData({
 
   if (state.data?.code === ResultCode.Empty) {
     return (
-      <ol className="mt-24 grid gap-6 text-lg font-light">
+      <ol className="grid gap-6 text-lg">
         <li>
           <h4 className="opacity-60">
             Search movies by title, genre, or description...
           </h4>
           <button
-            className="underline"
+            className="underline font-bold"
             onClick={() => {
               onChangeQuery("a romantic comedy set in New York");
               setTimeout(() => onSubmit(), 100);
@@ -57,7 +56,7 @@ export default function ResultData({
             Find movies by plot, characters, or themes...
           </h4>
           <button
-            className="underline"
+            className="underline font-bold"
             onClick={() => {
               onChangeQuery("a movie where a detective solves a mystery");
               setTimeout(() => onSubmit(), 100);
@@ -68,11 +67,11 @@ export default function ResultData({
         </li>
 
         <li>
-          <h4 className="opacity-60">
+          <h4 className="opacity-60 font-bold">
             Type a movie’s storyline, genre, or cast...
           </h4>
           <button
-            className="underline"
+            className="underline font-bold"
             onClick={() => {
               onChangeQuery("a fantasy film with dragons");
               setTimeout(() => onSubmit(), 100);
@@ -94,7 +93,7 @@ export default function ResultData({
           href={movie.metadata?.imdb_link || ""}
           target="_blank"
         >
-          <Image
+          <img
             src={movie.metadata?.poster_link || ""}
             alt={movie.metadata?.name || ""}
             width={180}

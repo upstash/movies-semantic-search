@@ -9,6 +9,6 @@
   }
 
   input::placeholder {
-    @apply text-emerald-900/50 font-light;
+    @apply text-indigo-900/40;
   }
 }

@@ -6,9 +6,8 @@ export default function KeyValue({
   value: number | string;
 }) {
   return (
-    <p className="bg-zinc-100 rounded-lg px-2 py-0.5">
-      <span className="">{label}:</span>{" "}
-      <span className="font-semibold">{value}</span>
+    <p className="bg-indigo-50 rounded-lg px-2 py-0.5">
+      <b>{label}:</b> <span>{value}</span>
     </p>
   );
 }

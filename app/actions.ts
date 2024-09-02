@@ -10,13 +10,8 @@ const index = new Index<MovieMetadata>({
   token: process.env.UPSTASH_VECTOR_REST_TOKEN,
 });
 
-export async function searchMovies(
-  _prevState: Result | undefined,
-  formData: FormData,
-): Promise<Result | undefined> {
+export async function getMovies(query: string): Promise<Result | undefined> {
   try {
-    const query = formData.get("query");
-
     const parsedCredentials = z
       .object({
         query: z.string().min(2),
@@ -28,7 +23,7 @@ export async function searchMovies(
     if (parsedCredentials.error) {
       return {
         code: ResultCode.MinLengthError,
-        data: [],
+        movies: [],
       };
     }
 
@@ -43,7 +38,7 @@ export async function searchMovies(
       console.error("Unexpected response structure:", response);
       return {
         code: ResultCode.UnknownError,
-        data: [],
+        movies: [],
       };
     }
 
@@ -96,13 +91,13 @@ export async function searchMovies(
 
     return {
       code: ResultCode.Success,
-      data: movies,
+      movies: movies,
     };
   } catch (error) {
     console.error("Error querying Upstash:", error);
     return {
       code: ResultCode.UnknownError,
-      data: [],
+      movies: [],
     };
   }
 }

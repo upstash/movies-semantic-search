@@ -1,36 +1,45 @@
-import { useFormStatus } from "react-dom";
 import { cn } from "@/lib/utils";
+import type { DefinedUseQueryResult } from "@tanstack/react-query";
+import { Result } from "@/lib/types";
 
 export default function SearchForm({
+  state,
   query,
-  setQuery,
+  onChangeQuery = () => {},
+  onSubmit = () => {},
 }: {
+  state: DefinedUseQueryResult<Result | undefined, Error>;
   query: string;
-  setQuery: (q: string) => void;
+  onChangeQuery: (q: string) => void;
+  onSubmit: () => void;
 }) {
-  const status = useFormStatus();
-
   return (
-    <div className="flex flex-col sm:flex-row max-w-screen-md mx-auto items-center rounded-xl gap-4">
+    <form
+      className="flex flex-col sm:flex-row max-w-screen-md mx-auto items-center rounded-xl gap-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        return onSubmit();
+      }}
+    >
       <input
         type="search"
         name="query"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => onChangeQuery(e.target.value)}
         placeholder="Search for a movie..."
         className="grow w-full sm:w-auto h-12 rounded-lg border border-emerald-500/40 px-4 text-xl"
-        disabled={status.pending}
+        disabled={state.isFetching}
       />
       <button
         type="submit"
         className={cn(
           "h-12 w-full sm:w-auto text-xl px-4 bg-emerald-500 text-white rounded-lg",
-          status.pending && "opacity-50",
+          state.isFetching && "opacity-50",
         )}
-        disabled={status.pending}
+        disabled={state.isFetching}
       >
         Search
       </button>
-    </div>
+    </form>
   );
 }

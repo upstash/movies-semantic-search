@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Metadata } from "next";
+import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Movies Semantic Search",
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-gradient-to-b text-emerald-900 from-emerald-500/10">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

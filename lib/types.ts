@@ -2,7 +2,6 @@ export type MovieMetadata = {
   poster_link: string;
   imdb_link: string;
   popularity: number;
-  ratings: number;
   vote_average: number;
   movie_id: string;
   name: string;
@@ -28,5 +27,5 @@ export enum ResultCode {
 
 export interface Result {
   code: ResultCode;
-  data: Movie[];
+  movies: Movie[];
 }

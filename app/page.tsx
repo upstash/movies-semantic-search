@@ -1,43 +1,60 @@
 "use client";
 
-import { useFormState } from "react-dom";
-import { searchMovies } from "./actions";
 import { ResultCode } from "@/lib/types";
 import SearchForm from "@/components/search-form";
 import ResultData from "@/components/result-data";
 import { useState } from "react";
-
-const initialState = {
-  data: [],
-  code: ResultCode.Empty,
-};
+import { useQuery } from "@tanstack/react-query";
+import { getMovies } from "@/app/actions";
 
 export default function Page() {
-  const [state, formAction] = useFormState(searchMovies, initialState);
   const [query, setQuery] = useState<string>("");
+
+  const state = useQuery({
+    queryKey: ["movies", query],
+    queryFn: async () => await getMovies(query),
+    initialData: {
+      movies: [],
+      code: ResultCode.Empty,
+    },
+    enabled: false,
+  });
 
   const onChangeQuery = (q: string) => {
     setQuery(q);
+  };
+
+  const onSubmit = () => {
+    return state.refetch();
   };
 
   return (
     <div className="max-w-screen-xl mx-auto px-8 py-12 text-center">
       <header>
         <h1
-          onClick={() => window.location.reload()}
+          onClick={() => onChangeQuery("")}
           className="cursor-pointer text-3xl md:text-5xl font-semibold tracking-tight text-emerald-900"
         >
           Movies Semantic Search
         </h1>
       </header>
 
-      <form action={formAction} className="mt-10">
-        <SearchForm query={query} setQuery={setQuery} />
+      <div className="mt-10">
+        <SearchForm
+          state={state}
+          query={query}
+          onChangeQuery={onChangeQuery}
+          onSubmit={onSubmit}
+        />
+      </div>
 
-        <div className="mt-10">
-          <ResultData state={state} onChangeQuery={onChangeQuery} />
-        </div>
-      </form>
+      <div className="mt-10">
+        <ResultData
+          state={state}
+          onChangeQuery={onChangeQuery}
+          onSubmit={onSubmit}
+        />
+      </div>
     </div>
   );
 }

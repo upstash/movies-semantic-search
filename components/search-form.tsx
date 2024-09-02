@@ -33,7 +33,7 @@ export default function SearchForm({
       <button
         type="submit"
         className={cn(
-          "h-12 w-full sm:w-auto text-xl px-4 bg-indigo-500 text-white rounded-lg",
+          "h-12 w-full sm:w-auto text-xl px-4 bg-indigo-900 text-indigo-50 rounded-lg",
           state.isFetching && "opacity-50",
         )}
         disabled={state.isFetching}

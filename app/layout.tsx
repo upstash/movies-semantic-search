@@ -4,7 +4,7 @@ import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Movies Semantic Search",
-  description: "A simple movie search engine",
+  description: "Semantic search for movies and TV series using TMDB data",
   icons: {
     icon: "/favicon-32x32.png",
   },

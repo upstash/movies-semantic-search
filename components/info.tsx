@@ -10,10 +10,11 @@ export const Info = ({ className }: React.ComponentProps<"div">) => {
       )}
     >
       <p>
-        This project is an experiment to demonstrate the scalability of Upstash
-        Vector with large datasets. We vectorized <b>23M Wikipedia articles</b>{" "}
-        in <b>11 languages</b> and stored <b>4324234 vectors</b> in a single
-        Upstash Vector index.
+        This project is an experiment to demonstrate the search quality of
+        Upstash Vector using the TMDB movie dataset. We vectorized{" "}
+        <b>71,673 TMDB movies</b> into a single Upstash Vector index and
+        searched them across multiple dimensions, including title, abstract, and
+        cast.
       </p>
 
       <p>
@@ -22,7 +23,7 @@ export const Info = ({ className }: React.ComponentProps<"div">) => {
           <a
             className="underline"
             target="_blank"
-            href="https://github.com/upstash/wikipedia-semantic-search"
+            href="https://github.com/upstash/movies-semantic-search"
           >
             github repo
           </a>{" "}

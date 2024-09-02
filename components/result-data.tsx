@@ -43,11 +43,11 @@ export default function ResultData({
           <button
             className="underline font-bold"
             onClick={() => {
-              onChangeQuery("a romantic comedy set in New York");
+              onChangeQuery("a mafia movie in 1940s New York");
               setTimeout(() => onSubmit(), 100);
             }}
           >
-            a romantic comedy set in New York
+            a mafia movie in 1940s New York
           </button>
         </li>
 

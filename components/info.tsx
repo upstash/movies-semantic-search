@@ -5,7 +5,7 @@ export const Info = ({ className }: React.ComponentProps<"div">) => {
   return (
     <div
       className={cn(
-        "rounded-2xl grid gap-4 max-w-2xl mx-auto text-sm bg-indigo-900 text-indigo-100 p-4 sm:p-6",
+        "rounded-2xl grid gap-4 max-w-2xl mx-auto text-sm bg-indigo-900 text-indigo-50 p-4 sm:p-6",
         className,
       )}
     >

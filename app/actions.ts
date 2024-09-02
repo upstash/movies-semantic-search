@@ -57,8 +57,6 @@ export async function getMovies(query: string): Promise<Result | undefined> {
       (movie) => movie.metadata?.vote_average ?? 0,
     );
 
-    console.log("popularity:", popularity);
-
     const minPopularity = Math.min(...popularity);
     const maxPopularity = Math.max(...popularity);
     const minRating = Math.min(...ratings);
@@ -70,15 +68,15 @@ export async function getMovies(query: string): Promise<Result | undefined> {
         minPopularity,
         maxPopularity,
       );
+
       const normalizedRating = normalize(
         match.metadata?.vote_average ?? 0,
         minRating,
         maxRating,
       );
+
       const relevance = match.score; // Assuming this is already normalized between 0 and 1
-      console.log("normalizedPopularity:", normalizedPopularity);
-      console.log("max:", maxPopularity);
-      console.log("min:", minPopularity);
+
       const total =
         0.5 * normalizedPopularity + 0.2 * normalizedRating + 0.3 * relevance;
       return {

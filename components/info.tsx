@@ -25,17 +25,8 @@ export const Info = ({ className }: React.ComponentProps<"div">) => {
             target="_blank"
             href="https://github.com/upstash/movies-semantic-search"
           >
-            github repo
-          </a>{" "}
-          or the{" "}
-          <a
-            className="underline"
-            target="_blank"
-            href="https://upstash.com/blog/indexing-wikipedia"
-          >
-            blog post
-          </a>{" "}
-          for more.
+            Github Repo
+          </a>
         </b>
       </p>
     </div>
